@@ -1,0 +1,91 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 37.3541
+  longitude: -121.955
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Los_Angeles
+  # Customization file
+  customize: !include customize.yaml
+http:
+  api_password: !secret http_password
+
+#logger:
+#  default: debug
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+#updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+#  include_used_components: true
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+#logbook:
+
+# Enables a map showing the location of tracked devices
+#map:
+
+# Track the sun
+#sun:
+
+# Text to speech
+#tts:
+#  - platform: google
+
+#camera:
+#- platform: local_file
+#  name: main_room
+#  file_path: /mnt/storage/motion/lastsnap.jpg
+
+automation: !include automations.yaml
+automation old: !include_dir_list automation/
+binary_sensor: !include_dir_merge_list binary_sensors/
+device_tracker: !include_dir_list device_trackers/
+group: !include groups.yaml
+input_boolean: !include_dir_named input_boolean/
+sensor: !include_dir_merge_list sensors/
+script: !include scripts.yaml
+switch: !include_dir_merge_list switches/
+
+#google:
+#  client_id: 494064581243-6p8b5dsfitrjmibae3oda42aio6if5gm.apps.googleusercontent.com
+#  client_secret: 5my-bXj6zicQ_-n7qxxb_kXS
+#geo_location:
+#  - platform: geo_json_events
+#    url: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api_key
+    allowed_chat_ids:
+      - !secret telegram_allowed_chat_id
+notify:
+  - name: telegram_notif
+    platform: telegram
+    chat_id: !secret telegram_allowed_chat_id

@@ -1,0 +1,29 @@
+alias: telegram_stas_at_home
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id:
+    - device_tracker.stas_phone_wifi
+    - device_tracker.stas_phone_bt
+    to: 'home'
+  - platform: homeassistant
+    event: start
+condition:
+  - condition: state
+    entity_id: input_boolean.stas_at_home
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: device_tracker.stas_phone_wifi
+      state: 'home'
+    - condition: state
+      entity_id: device_tracker.stas_phone_bt
+      state: 'home'
+action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.stas_at_home
+  - service: notify.telegram_notif
+    data:
+      message: "Stas at home"

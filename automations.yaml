@@ -1,0 +1,52 @@
+- alias: test automation
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_on
+
+#- alias: telegram
+#  trigger:
+#    platform: homeassistant
+#    event: start
+#  action:
+#    service: notify.telegram_notif
+#    data:
+#      title: '*Send a message*'
+#      message: "That's an example that _sends_ a *formatted* message with a custom inline keyboard."
+
+- alias: telegram_lights
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/start'
+  action:
+    - service: notify.telegram_notif
+      data:
+        message: 'commands'
+        data:
+          keyboard:
+            - '/light1, /light2'
+
+- alias: telegram_light1
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/light1'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.Light1
+
+- alias: telegram_light2
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/light2'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.Light2

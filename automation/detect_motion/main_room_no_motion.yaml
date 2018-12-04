@@ -1,0 +1,20 @@
+alias: telegram_detect_no_motion_in_main_room
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.pir_main
+    to: 'off'
+  - platform: homeassistant
+    event: start
+condition:
+  - condition: state
+    entity_id: input_boolean.detect_motion_main_room
+    state: 'on'
+action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.detect_motion_main_room
+#  - service: notify.telegram_notif
+#    data:
+#      message: "No motion in main room"
