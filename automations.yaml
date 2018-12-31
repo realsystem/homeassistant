@@ -1,22 +1,3 @@
-- alias: test automation
-  trigger:
-  - event: sunset
-    platform: sun
-  condition: []
-  action:
-  - data: {}
-    service: switch.turn_on
-
-#- alias: telegram
-#  trigger:
-#    platform: homeassistant
-#    event: start
-#  action:
-#    service: notify.telegram_notif
-#    data:
-#      title: '*Send a message*'
-#      message: "That's an example that _sends_ a *formatted* message with a custom inline keyboard."
-
 - alias: telegram_lights
   trigger:
     platform: event

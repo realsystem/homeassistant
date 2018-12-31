@@ -14,6 +14,8 @@ homeassistant:
   customize: !include customize.yaml
 http:
   api_password: !secret http_password
+  ssl_certificate: /mnt/storage/.homeassistant/certificate.pem
+  ssl_key: /mnt/storage/.homeassistant/privkey.pem
 
 #logger:
 #  default: debug
@@ -40,9 +42,6 @@ config:
 # Discover some devices automatically
 #discovery:
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
 # Enables support for tracking state changes over time
 history:
 
@@ -64,7 +63,7 @@ history:
 #  name: main_room
 #  file_path: /mnt/storage/motion/lastsnap.jpg
 
-automation: !include automations.yaml
+#automation: !include automations.yaml
 automation old: !include_dir_list automation/
 binary_sensor: !include_dir_merge_list binary_sensors/
 device_tracker: !include_dir_list device_trackers/
@@ -73,6 +72,7 @@ input_boolean: !include_dir_named input_boolean/
 sensor: !include_dir_merge_list sensors/
 script: !include scripts.yaml
 switch: !include_dir_merge_list switches/
+shell_command: !include_dir_merge_named shell_commands/
 
 #google:
 #  client_id: 494064581243-6p8b5dsfitrjmibae3oda42aio6if5gm.apps.googleusercontent.com
@@ -89,3 +89,46 @@ notify:
   - name: telegram_notif
     platform: telegram
     chat_id: !secret telegram_allowed_chat_id
+cover:
+  - platform: myq
+    username: !secret myq_user
+    password: !secret myq_pass
+    type: liftmaster
+conversation:
+  intents:
+    lights_on:
+      - Switch lights on
+    lights_off:
+      - Switch lights off
+    open_garage_door:
+      - Open garage door
+    close_garage_door:
+      - Close garage door
+    stop_garage_door:
+      - Stop garage door
+intent_script:
+  lights_on:
+    action:
+      service: switch.turn_on
+      data_template:
+        entity_id: switch.light1
+  lights_off:
+    action:
+      service: switch.turn_off
+      data_template:
+        entity_id: switch.light1
+  open_garage_door:
+    action:
+      service: cover.open_cover
+      data_template:
+        entity_id: cover.garage_door_opener
+  close_garage_door:
+    action:
+      service: cover.close_cover
+      data_template:
+        entity_id: cover.garage_door_opener
+  stop_garage_door:
+    action:
+      service: cover.stop_cover
+      data_template:
+        entity_id: cover.garage_door_opener

@@ -1,11 +1,11 @@
-- platform: transmission
-  host: 127.0.0.1
-  username: transmission
-  password: transmission
-  monitored_variables:
-    - 'current_status'
-    - 'download_speed'
-    - 'upload_speed'
-    - 'active_torrents'
-    - 'paused_torrents'
-    - 'total_torrents'
+#- platform: transmission
+#  host: 127.0.0.1
+#  username: transmission
+#  password: transmission
+#  monitored_variables:
+#    - 'current_status'
+#    - 'download_speed'
+#    - 'upload_speed'
+#    - 'active_torrents'
+#    - 'paused_torrents'
+#    - 'total_torrents'
