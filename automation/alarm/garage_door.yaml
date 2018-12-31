@@ -1,0 +1,14 @@
+alias: 'Notify and close garage door if alarm armed'
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: input_boolean.alarm_armed
+    to: 'on'
+condition:
+  - condition: state
+    entity_id: cover.garage_door_opener
+    state: opened
+action:
+  - service: cover.close_cover
+    data_template:
+      entity_id: cover.garage_door_opener

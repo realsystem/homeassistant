@@ -1,0 +1,2 @@
+start_motion: 'sudo service 1motion start'
+stop_motion: 'sudo service 1motion stop'

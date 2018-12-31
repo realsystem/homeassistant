@@ -1,0 +1,5 @@
+- platform: rpi_gpio
+  invert_logic: true
+  ports:
+    24: Light1
+    23: Light2

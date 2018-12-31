@@ -1,0 +1,20 @@
+alias: disarmed_alarm
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: input_boolean.stas_at_home
+    to: 'on'
+  - platform: homeassistant
+    event: start
+condition:
+  - condition: state
+    entity_id: input_boolean.alarm_armed
+    state: 'on'
+action:
+  - service: shell_command.stop_motion
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.alarm_armed
+#  - service: notify.telegram_notif
+#    data:
+#      message: "Alarm disarmed"
