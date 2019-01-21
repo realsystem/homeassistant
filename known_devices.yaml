@@ -1,17 +1,8 @@
-
-e8d81942ce3d:
-  hide_if_away: false
-  icon:
-  mac: E8:D8:19:42:CE:3D
-  name: e8d81942ce3d
-  picture:
-  track: false
-
 stas_phone_wifi:
   hide_if_away: false
   icon:
   mac: 1C:B7:2C:4E:13:21
-  name: Stas phone wifi
+  name: 'Stas phone wifi'
   picture:
   track: true
 
@@ -19,94 +10,30 @@ sveta_phone_wifi:
   hide_if_away: false
   icon:
   mac: D0:77:14:7E:AC:5E
-  name: Sveta phone wifi
+  name: 'Sveta phone wifi'
   picture:
   track: true
-
-f877b891c108:
-  hide_if_away: false
-  icon:
-  mac: F8:77:B8:91:C1:08
-  name: f877b891c108
-  picture:
-  track: false
 
 artem_phone_wifi:
   hide_if_away: false
   icon:
   mac: 68:C4:4D:39:FF:58
-  name: Artem phone wifi
+  name: 'Artem phone wifi'
   picture:
   track: true
-
-2016d870a687:
-  hide_if_away: false
-  icon:
-  mac: 20:16:D8:70:A6:87
-  name: 2016d870a687
-  picture:
-  track: false
 
 stas_phone_bt:
   hide_if_away: false
   icon:
   mac: BT_1C:B7:2C:4E:13:20
-  name: Stas phone bluetooth
+  name: 'Stas phone bluetooth'
   picture:
   track: true
 
-iphone:
+sveta_phone_bt:
   hide_if_away: false
   icon:
-  mac: BT_7C:50:49:46:4A:65
-  name: iPhone
+  mac: BT_D0:77:14:7E:AC:5D
+  name: 'Sveta phone bluetooth'
   picture:
-  track: false
-
-fariba_khazen:
-  hide_if_away: false
-  icon:
-  mac: BT_64:B0:A6:33:88:CE
-  name: Fariba Khazen
-  picture:
-  track: false
-
-av_samsung_soundbar_m550_mseries:
-  hide_if_away: false
-  icon:
-  mac: BT_00:C3:F4:38:A3:A3
-  name: '[AV] Samsung Soundbar M550 M-Series'
-  picture:
-  track: false
-
-tv_samsung_6_series_60:
-  hide_if_away: false
-  icon:
-  mac: BT_F8:77:B8:91:C1:09
-  name: '[TV] Samsung 6 Series (60)'
-  picture:
-  track: false
-
-c863f1e1e0e9:
-  hide_if_away: false
-  icon:
-  mac: C8:63:F1:E1:E0:E9
-  name: c863f1e1e0e9
-  picture:
-  track: false
-
-1cb72c892377:
-  hide_if_away: false
-  icon:
-  mac: 1C:B7:2C:89:23:77
-  name: 1cb72c892377
-  picture:
-  track: false
-
-645299fcd39c:
-  hide_if_away: false
-  icon:
-  mac: 64:52:99:FC:D3:9C
-  name: 645299fcd39c
-  picture:
-  track: false
+  track: true

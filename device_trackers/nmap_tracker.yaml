@@ -1,10 +1,10 @@
-platform: nmap_tracker
-hosts: 192.168.0.0/24
-exclude:
- - 192.168.0.1
- - 192.168.0.105
- - 192.168.0.107
- - 192.168.0.109
-new_device_defaults:
-  track_new_devices: False
-  hide_if_away: False
+#platform: nmap_tracker
+#hosts: 192.168.0.0/24
+#exclude:
+# - 192.168.0.1
+# - 192.168.0.105
+# - 192.168.0.107
+# - 192.168.0.109
+#new_device_defaults:
+#  track_new_devices: False
+#  hide_if_away: False

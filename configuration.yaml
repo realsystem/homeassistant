@@ -12,6 +12,7 @@ homeassistant:
   time_zone: America/Los_Angeles
   # Customization file
   customize: !include customize.yaml
+api:
 http:
   api_password: !secret http_password
   ssl_certificate: /mnt/storage/.homeassistant/certificate.pem
@@ -19,6 +20,9 @@ http:
 
 #logger:
 #  default: debug
+
+#lovelace:
+#  mode: yaml
 
 # Enables the frontend
 frontend:
@@ -58,10 +62,18 @@ history:
 #tts:
 #  - platform: google
 
+#ffmpeg:
+
 #camera:
 #- platform: local_file
 #  name: main_room
 #  file_path: /mnt/storage/motion/lastsnap.jpg
+
+#camera:
+#  - platform: onvif
+#    host: 192.168.0.110
+#    username: admin
+#    password: 123
 
 #automation: !include automations.yaml
 automation old: !include_dir_list automation/
@@ -132,3 +144,7 @@ intent_script:
       service: cover.stop_cover
       data_template:
         entity_id: cover.garage_door_opener
+
+#geo_location:
+#  - platform: usgs_earthquakes_feed
+#    feed_type: 'past_day_m10_earthquakes'
