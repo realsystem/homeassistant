@@ -22,6 +22,6 @@ action:
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.stas_at_home
-  - service: notify.telegram_notif
-    data:
-      message: "Stas is away"
+#  - service: notify.telegram_notif
+#    data:
+#      message: "Stas is away"
