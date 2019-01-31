@@ -1,11 +1,9 @@
 alias: 'Notify and close garage door if alarm armed'
-initial_state: 'on'
+initial_state: 'off'
 trigger:
   - platform: state
     entity_id: input_boolean.alarm_armed
     to: 'on'
-  - platform: homeassistant
-    event: start
 condition:
   - condition: state
     entity_id: cover.garage_door_opener

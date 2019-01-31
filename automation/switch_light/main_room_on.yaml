@@ -4,17 +4,25 @@ trigger:
   - platform: sun
     event: sunset
     offset: '-00:30:00'
-  - platform: homeassistant
-    event: start
+  - platform: state
+    entity_id: input_boolean.stas_at_home
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.sveta_at_home
+    to: 'on'
 condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_boolean_stas_at_home
-      state: home
+      entity_id: input_boolean.stas_at_home
+      state: 'on'
     - condition: state
-      entity_id: input_boolean_sveta_at_home
-      state: home
+      entity_id: input_boolean.sveta_at_home
+      state: 'on'
+    - condition: sun
+      after: sunset
+    - condition: sun
+      before: sunrise
 action:
   - service: switch.turn_on
     entity_id: switch.light1
