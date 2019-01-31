@@ -1,5 +1,5 @@
 alias: 'Notify when garage door is opening'
-initial_state: 'on'
+initial_state: 'off'
 trigger:
   - platform: state
     entity_id: cover.garage_door_opener_2

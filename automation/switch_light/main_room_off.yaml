@@ -6,3 +6,6 @@ trigger:
 action:
   - service: switch.turn_off
     entity_id: switch.light1
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.switch_light1

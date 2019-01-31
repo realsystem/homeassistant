@@ -11,18 +11,25 @@ trigger:
     entity_id: input_boolean.sveta_at_home
     to: 'on'
 condition:
-  condition: or
+  condition: and
   conditions:
     - condition: state
-      entity_id: input_boolean.stas_at_home
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.sveta_at_home
-      state: 'on'
+      entity_id: input_boolean.switch_light1
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.stas_at_home
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.sveta_at_home
+          state: 'on'
     - condition: sun
       after: sunset
-    - condition: sun
-      before: sunrise
+      offset: '-00:30:00'
 action:
   - service: switch.turn_on
     entity_id: switch.light1
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.switch_light1

@@ -101,49 +101,49 @@ notify:
   - name: telegram_notif
     platform: telegram
     chat_id: !secret telegram_allowed_chat_id
-cover:
-  - platform: myq
-    username: !secret myq_user
-    password: !secret myq_pass
-    type: liftmaster
-conversation:
-  intents:
-    lights_on:
-      - Switch lights on
-    lights_off:
-      - Switch lights off
-    open_garage_door:
-      - Open garage door
-    close_garage_door:
-      - Close garage door
-    stop_garage_door:
-      - Stop garage door
-intent_script:
-  lights_on:
-    action:
-      service: switch.turn_on
-      data_template:
-        entity_id: switch.light1
-  lights_off:
-    action:
-      service: switch.turn_off
-      data_template:
-        entity_id: switch.light1
-  open_garage_door:
-    action:
-      service: cover.open_cover
-      data_template:
-        entity_id: cover.garage_door_opener
-  close_garage_door:
-    action:
-      service: cover.close_cover
-      data_template:
-        entity_id: cover.garage_door_opener
-  stop_garage_door:
-    action:
-      service: cover.stop_cover
-      data_template:
-        entity_id: cover.garage_door_opener
+#cover:
+#  - platform: myq
+#    username: !secret myq_user
+#    password: !secret myq_pass
+#    type: liftmaster
+#conversation:
+#  intents:
+#    lights_on:
+#      - Switch lights on
+#    lights_off:
+#      - Switch lights off
+#    open_garage_door:
+#      - Open garage door
+#    close_garage_door:
+#      - Close garage door
+#    stop_garage_door:
+#      - Stop garage door
+#intent_script:
+#  lights_on:
+#    action:
+#      service: switch.turn_on
+#      data_template:
+#        entity_id: switch.light1
+#  lights_off:
+#    action:
+#      service: switch.turn_off
+#      data_template:
+#        entity_id: switch.light1
+#  open_garage_door:
+#    action:
+#      service: cover.open_cover
+#      data_template:
+#        entity_id: cover.garage_door_opener
+#  close_garage_door:
+#    action:
+#      service: cover.close_cover
+#      data_template:
+#        entity_id: cover.garage_door_opener
+#  stop_garage_door:
+#    action:
+#      service: cover.stop_cover
+#      data_template:
+#        entity_id: cover.garage_door_opener
 
 #geo_location:
 #  - platform: usgs_earthquakes_feed
