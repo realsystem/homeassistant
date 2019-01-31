@@ -1,0 +1,30 @@
+alias: 'Notify when garage door is opening'
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: cover.garage_door_opener_2
+    to: 'open'
+condition:
+#  - condition: state
+#    entity_id: cover.garage_door_opener_2
+#    state: 'open'
+  condition: and
+  conditions:
+    - condition: time
+      after: '23:00:00'
+      before: '08:00:00'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: cover.garage_door_opener
+        state: 'opening'
+      - condition: state
+        entity_id: cover.garage_door_opener
+        state: 'open'
+action:
+  - service: cover.close_cover
+    data_template:
+      entity_id: cover.garage_door_opener_2
+  - service: notify.telegram_notif
+    data:
+      message: "Detected garage openning, override closing"
